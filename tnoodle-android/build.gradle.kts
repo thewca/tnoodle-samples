@@ -33,6 +33,6 @@ dependencies {
 
     implementation(ANDROIDSVG)
 
-    implementation("${rootProject.group}:tnoodle-scrambles:${rootProject.version}")
-    implementation("${rootProject.group}:tnoodle-utils:${rootProject.version}")
+    implementation("org.worldcubeassociation.tnoodle:tnoodle-scrambles:${rootProject.version}")
+    implementation("org.worldcubeassociation.tnoodle:tnoodle-utils:${rootProject.version}")
 }

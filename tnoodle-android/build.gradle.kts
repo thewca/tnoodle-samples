@@ -2,6 +2,8 @@ import com.android.build.gradle.AppExtension
 import dependencies.Libraries.ANDROIDSVG
 import dependencies.Libraries.ANDROID_APPCOMPAT_V7
 import dependencies.Libraries.ANDROID_SUPPORT_V4
+import dependencies.Libraries.TNOODLE_SCRAMBLES
+import dependencies.Libraries.TNOODLE_UTILS
 
 import dependencies.Versions.ANDROID_SDK
 import dependencies.Versions.ANDROID_SDK_MIN
@@ -33,6 +35,6 @@ dependencies {
 
     implementation(ANDROIDSVG)
 
-    implementation("org.worldcubeassociation.tnoodle:tnoodle-scrambles:${rootProject.version}")
-    implementation("org.worldcubeassociation.tnoodle:tnoodle-utils:${rootProject.version}")
+    implementation(TNOODLE_SCRAMBLES)
+    implementation(TNOODLE_UTILS)
 }

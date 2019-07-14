@@ -17,7 +17,10 @@ which is automatically sourced by Gradle. It contains common code and shared con
 A sample Android app with a drawer that lets you choose between several puzzles and generates scrambles for them.
 
 Note that in order for this setup to compile, you will have to **install the Android SDK** on your local machine.
-Steps and instructions for this can be found in the main [TNoodle README](https://github.com/thewca/tnoodle/blob/master/README.md) and at [https://developer.android.com/studio](https://developer.android.com/studio)
+Most notably, this will include setting an $ANDROID_HOME environment variable so that Gradle can find the SDK installation.
+
+Detailed steps and instructions for this can be found at [https://developer.android.com/studio](https://developer.android.com/studio).
+Scroll to the bottom of the page and opt for "Command line tools only" to avoid an overhead of several GB in IDE downloads.
 
 Build an APK file by invoking `./gradlew :tnoodle-android:assemble`
 
@@ -25,5 +28,7 @@ Build an APK file by invoking `./gradlew :tnoodle-android:assemble`
 
 This package uses GWT to compile TNoodle into some JavaScript code such that all scrambling capabilities can be used in a browser.
 The Gradle setup is supposed to compile the JS file -- details on how to actually *use* the produced `tnoodle.js` can be found in a separate README within `tnoodle-js`.
+
+The compilation process is triggered by invoking `:tnoodle-js:compileGwt`, but due to limitations in GWT it **only works up to Java 8**!
 
 After compiling successfully, you can find the result file at `tnoodle-js/build/gwt/out/tnoodlejs`.

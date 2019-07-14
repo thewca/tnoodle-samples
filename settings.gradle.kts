@@ -11,4 +11,4 @@ pluginManagement {
 }
 
 include("tnoodle-android")
-include("tnoodle-js")
+include("tnoodlejs-compiler")

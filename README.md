@@ -24,11 +24,11 @@ Scroll to the bottom of the page and opt for "Command line tools only" to avoid 
 
 Build an APK file by invoking `./gradlew :tnoodle-android:assemble`
 
-### tnoodle-js
+### tnoodlejs-compiler
 
 This package uses GWT to compile TNoodle into some JavaScript code such that all scrambling capabilities can be used in a browser.
-The Gradle setup is supposed to compile the JS file -- details on how to actually *use* the produced `tnoodle.js` can be found in a separate README within `tnoodle-js`.
+The Gradle setup is supposed to compile the JS file -- details on how to actually *use* the produced `tnoodle.js` can be found in a separate README within the project directory.
 
-The compilation process is triggered by invoking `:tnoodle-js:compileGwt`, but due to limitations in GWT it **only works up to Java 8**!
+The compilation process is triggered by invoking `:tnoodlejs-compiler:compileGwt`, but due to limitations in GWT it **only works up to Java 8**!
 
-After compiling successfully, you can find the result file at `tnoodle-js/build/gwt/out/tnoodlejs`.
+After compiling successfully, you can find the result file at `tnoodlejs-compiler/build/gwt/out/tnoodlejs`.

@@ -27,15 +27,11 @@ import android.widget.TextView;
 import com.caverock.androidsvg.SVG;
 import com.caverock.androidsvg.SVGParseException;
 
-import net.gnehzr.tnoodle.scrambles.Puzzle;
-import net.gnehzr.tnoodle.scrambles.PuzzlePlugins;
-import net.gnehzr.tnoodle.svglite.Dimension;
-import net.gnehzr.tnoodle.svglite.Svg;
-import net.gnehzr.tnoodle.utils.BadLazyClassDescriptionException;
-import net.gnehzr.tnoodle.utils.LazyInstantiator;
-import net.gnehzr.tnoodle.utils.LazyInstantiatorException;
+import org.worldcubeassociation.tnoodle.scrambles.Puzzle;
+import org.worldcubeassociation.tnoodle.scrambles.PuzzleRegistry;
+import org.worldcubeassociation.tnoodle.svglite.Dimension;
+import org.worldcubeassociation.tnoodle.svglite.Svg;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -43,19 +39,17 @@ import java.util.TreeMap;
 public class SessionActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
     private static final String TAG = SessionActivity.class.getName();
-    private static SortedMap<String, LazyInstantiator<Puzzle>> puzzles;
+    private static SortedMap<String, PuzzleRegistry> puzzles;
     private static ArrayList<String> shortNames;
 
     static {
-        try {
-            puzzles = new TreeMap<String, LazyInstantiator<Puzzle>>(PuzzlePlugins.getScramblers());
+        puzzles = new TreeMap<String, PuzzleRegistry>();
 
-            shortNames = new ArrayList<String>(puzzles.keySet());
-        } catch (IOException e) {
-            Log.wtf(TAG, e);
-        } catch (BadLazyClassDescriptionException e) {
-            Log.wtf(TAG, e);
+        for (PuzzleRegistry pr : PuzzleRegistry.values()) {
+            puzzles.put(pr.getKey(), pr);
         }
+
+        shortNames = new ArrayList<String>(puzzles.keySet());
     }
 
     /**
@@ -104,7 +98,7 @@ public class SessionActivity extends AppCompatActivity
     }
 
     public void onSectionAttached(String shortName) {
-        mTitle = PuzzlePlugins.getScramblerLongName(shortName);
+        mTitle = puzzles.get(shortName).getDescription();
     }
 
     public void restoreActionBar() {
@@ -183,12 +177,8 @@ public class SessionActivity extends AppCompatActivity
             scrambleImageView = (ImageView) rootView.findViewById(R.id.scrambleImageView);
 
             String shortName = getShortName();
-            LazyInstantiator<Puzzle> lazyPuzzle = puzzles.get(shortName);
-            try {
-                puzzle = lazyPuzzle.cachedInstance();
-            } catch (LazyInstantiatorException e) {
-                Log.wtf(TAG, e);
-            }
+            PuzzleRegistry lazyPuzzle = puzzles.get(shortName);
+            puzzle = lazyPuzzle.getScrambler();
 
             doScramble();
             return rootView;

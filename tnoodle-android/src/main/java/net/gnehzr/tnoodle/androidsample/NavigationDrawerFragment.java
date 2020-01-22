@@ -26,10 +26,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import net.gnehzr.tnoodle.scrambles.Puzzle;
-import net.gnehzr.tnoodle.scrambles.PuzzleIcon;
-import net.gnehzr.tnoodle.scrambles.PuzzlePlugins;
-import net.gnehzr.tnoodle.utils.LazyInstantiator;
+import org.worldcubeassociation.tnoodle.scrambles.PuzzleIcon;
+import org.worldcubeassociation.tnoodle.scrambles.PuzzleRegistry;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -109,7 +107,7 @@ public class NavigationDrawerFragment extends Fragment {
         return mDrawerListView;
     }
 
-    public void setPuzzles(SortedMap<String, LazyInstantiator<Puzzle>> puzzles) {
+    public void setPuzzles(SortedMap<String, PuzzleRegistry> puzzles) {
         ArrayAdapter<String> a = new PuzzleArrayAdapter(
                 getActionBar().getThemedContext(),
                 R.layout.puzzle_list_item,
@@ -284,8 +282,11 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
     class PuzzleArrayAdapter extends ArrayAdapter<String> {
-        public PuzzleArrayAdapter(Context c, int resource, SortedMap<String, LazyInstantiator<Puzzle>> puzzles) {
+        private final SortedMap<String, PuzzleRegistry> registryMap;
+
+        public PuzzleArrayAdapter(Context c, int resource, SortedMap<String, PuzzleRegistry> puzzles) {
             super(c, resource, new ArrayList<String>(puzzles.keySet()));
+            registryMap = puzzles;
         }
 
         public View getView(int position, View convertView, ViewGroup parent) {
@@ -295,7 +296,7 @@ public class NavigationDrawerFragment extends Fragment {
             }
             TextView longNameView = (TextView) convertView.findViewById(R.id.puzzle_long_name);
             String shortName = getItem(position);
-            String longName = PuzzlePlugins.getScramblerLongName(shortName);
+            String longName = registryMap.get(shortName).getDescription();
             longNameView.setText(longName);
 
             ByteArrayOutputStream puzzleIconPngBaos = PuzzleIcon.loadPuzzleIconPng(shortName);

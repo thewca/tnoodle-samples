@@ -1,9 +1,9 @@
 import com.android.build.gradle.AppExtension
+import configurations.Languages.attachRemoteRepositories
 import dependencies.Libraries.ANDROIDSVG
 import dependencies.Libraries.ANDROID_APPCOMPAT_V7
 import dependencies.Libraries.ANDROID_SUPPORT_V4
 import dependencies.Libraries.TNOODLE_SCRAMBLES
-import dependencies.Libraries.TNOODLE_UTILS
 
 import dependencies.Versions.ANDROID_SDK
 import dependencies.Versions.ANDROID_SDK_MIN
@@ -26,8 +26,9 @@ configure<AppExtension> {
 repositories {
     jcenter()
     google()
-    mavenLocal()
 }
+
+attachRemoteRepositories()
 
 dependencies {
     implementation(ANDROID_APPCOMPAT_V7)
@@ -36,5 +37,4 @@ dependencies {
     implementation(ANDROIDSVG)
 
     implementation(TNOODLE_SCRAMBLES)
-    implementation(TNOODLE_UTILS)
 }

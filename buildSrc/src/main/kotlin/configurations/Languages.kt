@@ -11,7 +11,7 @@ import org.gradle.kotlin.dsl.*
 object Languages {
     fun Project.attachLocalRepositories() {
         repositories {
-            maven(url = "$rootDir/gradle/repository")
+            mavenLocal()
         }
     }
 

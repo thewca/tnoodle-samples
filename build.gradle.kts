@@ -1,5 +1,3 @@
-import configurations.Languages.attachLocalRepositories
-
 import dependencies.Libraries.ANDROID_BUILD_TOOLS
 
 buildscript {
@@ -16,6 +14,4 @@ buildscript {
 allprojects {
     group = "org.worldcubeassociation.tnoodle-samples"
     version = "0.1.0"
-    
-    attachLocalRepositories()
 }

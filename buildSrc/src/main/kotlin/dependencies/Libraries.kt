@@ -7,8 +7,7 @@ object Libraries {
 
     val ANDROID_BUILD_TOOLS = "com.android.tools.build:gradle:${Versions.ANDROID_BUILD_TOOLS}"
 
-    val TNOODLE_SCRAMBLES = "org.worldcubeassociation.tnoodle:tnoodle-scrambles:${Versions.TNOODLE_SCRAMBLES}"
-    val TNOODLE_UTILS = "org.worldcubeassociation.tnoodle:tnoodle-utils:${Versions.TNOODLE_UTILS}"
+    val TNOODLE_SCRAMBLES = "org.worldcubeassociation.tnoodle:lib-scrambles:${Versions.TNOODLE_SCRAMBLES}"
 
     object Buildscript {
         val ANDROID_BUILD_TOOLS_ACTUAL = ANDROID_BUILD_TOOLS

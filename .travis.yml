@@ -10,7 +10,7 @@ android:
 
 script:
   - git clone https://github.com/thewca/tnoodle.git ~/tnoodle && cd ~/tnoodle
-  - git checkout v0.14.0
+  - git checkout v0.15.0
   - ./gradlew publishToMavenLocal
   - "cd -"
   - ./gradlew check

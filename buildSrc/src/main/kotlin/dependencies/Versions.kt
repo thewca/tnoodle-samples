@@ -3,7 +3,7 @@ package dependencies
 object Versions {
     val GWT = "2.5.1"
     val TNOODLE = "0.17.0"
-    val TNOODLE_LEGACY = "0.16.3"
+    val TNOODLE_LEGACY = "0.15.0"
 
     val ANDROID_SDK = 28
     val ANDROID_SDK_MIN = 17
@@ -17,7 +17,9 @@ object Versions {
     val ANDROIDSVG = "1.2.1"
 
     val TNOODLE_SCRAMBLES = TNOODLE
+
     val TNOODLE_SCRAMBLES_LEGACY = TNOODLE_LEGACY
+    val TNOODLE_UTILS_LEGACY = TNOODLE_LEGACY
 
     object Plugins {
         val GWT = "1.0.8"

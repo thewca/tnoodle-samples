@@ -10,5 +10,6 @@ pluginManagement {
     }
 }
 
+include("java-mvp")
 include("tnoodle-android")
 include("tnoodlejs-compiler")
